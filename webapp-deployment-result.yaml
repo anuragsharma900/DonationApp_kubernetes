@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"webapp"},"name":"webapp-deployment","namespace":"default"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"webapp"}},"template":{"metadata":{"labels":{"app":"webapp"}},"spec":{"containers":[{"image":"654654204927.dkr.ecr.eu-north-1.amazonaws.com/donation_app:latest","name":"donation-portal","ports":[{"containerPort":8080}]}]}}}}
+  creationTimestamp: "2024-01-13T06:44:19Z"
+  generation: 1
+  labels:
+    app: webapp
+  name: webapp-deployment
+  namespace: default
+  resourceVersion: "64896"
+  uid: abb19db4-cb05-433e-9aad-680b1156f5da
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: webapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - image: 654654204927.dkr.ecr.eu-north-1.amazonaws.com/donation_app:latest
+        imagePullPolicy: Always
+        name: donation-portal
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2024-01-13T06:44:40Z"
+    lastUpdateTime: "2024-01-13T06:44:40Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2024-01-13T06:44:19Z"
+    lastUpdateTime: "2024-01-13T06:44:40Z"
+    message: ReplicaSet "webapp-deployment-57d69657dc" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 2
+  replicas: 2
+  updatedReplicas: 2
