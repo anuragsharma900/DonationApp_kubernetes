@@ -1,4 +1,5 @@
 # DonationApp_kubernetes as per AWS EKS Cluster Machine
+### Note- i have stored images in AWS ECR repository and pulling it from there Or can get the images from Docker Hub
 Prerequisite to run eks:
 1. install docker
 2. install kubectl
