@@ -193,7 +193,11 @@ mysql-pv-storage.yaml and mysql-pvc-storage.yaml
 Minikube for AWS ECR
 
 To pull image from ECR, we need to configure registry-creds which will create secret which will create  the "awsecr-cred" secret (kubectl get secrets)  for Minikube cluster as docker host is different from Minikube docker
- 
+
+>> aws ecr login
+
+>> eval $(minikube -p minikube docker-env)
+
 >> minikube addons configure registry-creds
 
 AND
