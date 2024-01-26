@@ -138,13 +138,21 @@ use yaml file to create pods(deploymnet.yaml)
 kubectl apply/delete -f yaml_filename
 
 kubectl apply -f webapp-deployment.yaml
+
 kubectl apply -f webapp-service.yaml
+
 kubectl apply -f webapp-extService.yaml
+
 kubectl apply -f mysql-pv-storage.yaml
+
 kubectl apply -f mysql-pvc-storage.yaml
+
 kubectl apply -f mysql-secret.yaml
+
 kubectl apply -f mysql-deployment.yaml
+
 kubectl apply -f mysql-service.yaml
+
 
 Or you can create helm chart at your convenience...(not included here)
 
@@ -173,6 +181,11 @@ kubectl delete pv --all/pvc-name
 
 To see the persistent claims
 kubectl delete pvc --all / pvc-name
+
+For minikube check the storage class for PV and PVC
+and change accordingly in the
+mysql-pv-storage.yaml and mysql-pvc-storage.yaml
+
 
 !!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!
 
