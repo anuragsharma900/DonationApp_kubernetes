@@ -174,8 +174,9 @@ kubectl delete pv --all/pvc-name
 To see the persistent claims
 kubectl delete pvc --all / pvc-name
 
-!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__
-To pull images from AWS ECR with minikube, just note the below info
+!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!
+
+### To pull images from AWS ECR with minikube, just note the below info
 Minikube for AWS ECR
 
 To pull image from ECR, we need to configure registry-creds which will create secret which will create  the "awsecr-cred" secret (kubectl get secrets)  for Minikube cluster as docker host is different from Minikube docker
