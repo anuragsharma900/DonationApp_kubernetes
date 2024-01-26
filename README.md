@@ -182,6 +182,9 @@ Minikube for AWS ECR
 To pull image from ECR, we need to configure registry-creds which will create secret which will create  the "awsecr-cred" secret (kubectl get secrets)  for Minikube cluster as docker host is different from Minikube docker
  
 >> minikube addons configure registry-creds
+
+AND
+
 >> minikube addons enable registry-creds 
 
 
