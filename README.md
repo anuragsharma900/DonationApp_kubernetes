@@ -174,6 +174,49 @@ kubectl delete pv --all/pvc-name
 To see the persistent claims
 kubectl delete pvc --all / pvc-name
 
+!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__!!-------------!!__
+To pull images from AWS ECR with minikube, just note the below info
+Minikube for AWS ECR
 
+To pull image from ECR, we need to configure registry-creds which will create secret which will create  the "awsecr-cred" secret (kubectl get secrets)  for Minikube cluster as docker host is different from Minikube docker
+ 
+>> minikube addons configure registry-creds
+>> minikube addons enable registry-creds 
+
+
+
+
+So for instance in web app - deployment yaml write   
+
+imagePullSecrets: 
+   - name: awsecr-cred
+
+
+For Ex-
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: donation-portal
+          image: 654654204927.dkr.ecr.eu-north-1.amazonaws.com/donation_app:latest
+          ports:
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: awsecr-cred
 
    
