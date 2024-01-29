@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  donationApp:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2024-01-29T02:02:51.921776-05:00"
+    description: A Helm chart for Donation-portal webapp
+    digest: 4866643953ebab764e3ab8a9d5aafaf709f389ca8b11e71014cd9d2b02bafff4
+    name: donationApp
+    type: application
+    urls:
+    - donationApp-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-01-29T02:02:51.916993-05:00"
