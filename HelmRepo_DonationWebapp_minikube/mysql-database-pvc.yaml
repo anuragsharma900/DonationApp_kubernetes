@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-database
+  labels:
+    app: flaskappdb
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskappdb
+  template:
+    metadata:
+      labels:
+        app: flaskappdb
+    spec:
+      containers:
+      - name: flaskappdb
+        image: 654654204927.dkr.ecr.eu-north-1.amazonaws.com/mysqlpod:latest
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-root-password
+        - name: MYSQL_DATABASE
+          value: "crud"    
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+        
